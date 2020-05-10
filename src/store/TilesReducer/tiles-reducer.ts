@@ -11,6 +11,8 @@ import {
 import {color} from "../colors";
 
 const initState: TILES_STATE = {
+	gameStarted: false,
+	
 	tiles: [
 		{id: 1, frontColor: 'lightgrey', backColor: 'black', isGuessed: false},
 		{id: 2, frontColor: 'lightgrey', backColor: 'black', isGuessed: false},
@@ -22,8 +24,8 @@ const initState: TILES_STATE = {
 		{id: 8, frontColor: 'lightgrey', backColor: 'black', isGuessed: false},
 	],
 	
-	firstClickedTile: null,
-	secondClickedTile: null,
+	previousTile: null,
+	currentTile: null,
 	
 	rowCount: 4,
 	columnCount: 4,
@@ -64,65 +66,71 @@ export const TilesReducer = (
 			
 			return {
 				...state,
-				tiles: array
+				gameStarted: true,
+				tiles: array,
 			}
 		}
 		
 		case HANDLE_CLICK_ON_TILE: {
+			if (!state.gameStarted) {
+				return state;
+			}
+			
 			// Getting clicked tile index:
 			let arr = state.tiles.slice();
-			let clickedTile = arr.indexOf(action.tile);
+			let clickedTile = arr[arr.indexOf(action.tile)];
 			
-			// Checking: if it is already guessed or equal to firstClickTile:
-			if (arr[clickedTile].isGuessed || state.firstClickedTile?.id === arr[clickedTile].id) {
+			if (clickedTile.isGuessed)
 				return state;
-			} else {
-				arr[clickedTile].frontColor = arr[clickedTile].backColor;
+			
+			
+			if (state.previousTile === null) {
+				clickedTile.frontColor = clickedTile.backColor
+				return {
+					...state,
+					previousTile: clickedTile,
+					tiles: arr,
+				}
 			}
 			
-			// Setting first and second tile:
-			if (!state.firstClickedTile) {
-				console.log(arr[clickedTile].frontColor)
+			if (state.currentTile === null) {
+				clickedTile.frontColor = clickedTile.backColor
 				return {
 					...state,
-					firstClickedTile: arr[clickedTile],
-					tiles: arr.slice(),
+					currentTile: clickedTile,
+					tiles: arr,
 				}
-			} else if (!state.secondClickedTile) {
+			} else {
 				return {
-					...state,
-					secondClickedTile: arr[clickedTile],
-					tiles: arr.slice(),
+					...state
 				}
 			}
-			return state;
 		}
 		
 		case CHECK_TILES: {
+			if (state.currentTile === null || state.previousTile === null)
+				return state;
 			
 			let arr = state.tiles.slice();
-			if (state.firstClickedTile !== null && state.secondClickedTile !== null) {
-				let indexFirst = -1;
-				let indexSecond = -1;
-				
-				indexFirst = arr.indexOf(state.firstClickedTile)
-				indexSecond = arr.indexOf(state.secondClickedTile);
-				if (state.firstClickedTile.backColor === state.secondClickedTile.backColor) {
-					arr[indexFirst].isGuessed = true
-					arr[indexSecond].isGuessed = true
-				} else {
-					arr[indexFirst].frontColor = 'lightgrey'
-					arr[indexSecond].frontColor = 'lightgrey'
-				}
+			let currentTile = arr[arr.indexOf(state.currentTile)];
+			let previousTile = arr[arr.indexOf(state.previousTile)];
+			
+			if (currentTile.id !== previousTile.id &&
+				currentTile.backColor === previousTile.backColor) {
+				[currentTile.frontColor, previousTile.frontColor] = [currentTile.backColor, previousTile.backColor];
+				[currentTile.isGuessed, previousTile.isGuessed] = [true, true];
 			} else {
-				return state;
+				arr.forEach(tile => {
+					if(!tile.isGuessed)
+						tile.frontColor = 'lightgrey'
+				})
 			}
 			
 			return {
 				...state,
-				tiles: arr.slice(),
-				firstClickedTile: null,
-				secondClickedTile: null,
+				tiles: arr,
+				currentTile: null,
+				previousTile: null,
 			}
 		}
 		
