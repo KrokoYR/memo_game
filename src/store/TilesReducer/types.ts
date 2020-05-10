@@ -10,10 +10,12 @@ export interface TILE_TYPE {
 
 // State type:
 export interface TILES_STATE {
+	gameStarted: boolean;
+	
 	tiles: Array<TILE_TYPE>;
 	// Tiles:
-	firstClickedTile: TILE_TYPE | null;
-	secondClickedTile: TILE_TYPE | null;
+	previousTile: TILE_TYPE | null;
+	currentTile: TILE_TYPE | null;
 	
 	// Size of
 	rowCount: number;
