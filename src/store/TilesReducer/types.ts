@@ -10,10 +10,14 @@ export interface TILE_TYPE {
 
 // State type:
 export interface TILES_STATE {
+	// Flag for start of a game:
 	gameStarted: boolean;
 	
-	tiles: Array<TILE_TYPE>;
+	// Round counter:
+	roundCounter: number;
+	
 	// Tiles:
+	tiles: Array<TILE_TYPE>;
 	previousTile: TILE_TYPE | null;
 	currentTile: TILE_TYPE | null;
 	
@@ -25,7 +29,7 @@ export interface TILES_STATE {
 // Actions types:
 export const HANDLE_CLICK_ON_TILE = 'HANDLE_CLICK_ON_TILE'
 export const CHECK_TILES = 'CHECK_TILES'
-export const RESTART_GAME = 'RESTART_GAME'
+
 export const START_GAME = 'START_GAME'
 
 interface HANDLE_CLICK_ON_TILE_ACTION {
@@ -37,15 +41,10 @@ interface CHECK_TILES_ACTION {
 	type: typeof CHECK_TILES,
 }
 
-interface RESTART_GAME_ACTION {
-	type: typeof RESTART_GAME,
-}
-
 interface START_GAME_ACTION {
 	type: typeof START_GAME,
 }
 
 export type TILES_ACTION_TYPES = HANDLE_CLICK_ON_TILE_ACTION |
-	RESTART_GAME_ACTION |
 	START_GAME_ACTION |
 	CHECK_TILES_ACTION
