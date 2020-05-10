@@ -1,7 +1,7 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
 import styles from './TileElement.module.css'
 
-import {TILE_TYPE} from '../store/TilesReducer/types';
+import {TILE_TYPE} from '../../store/TilesReducer/types';
 
 interface TileElementProps {
 	tile: TILE_TYPE,
@@ -11,14 +11,11 @@ interface TileElementProps {
 
 const TileElement: FC<TileElementProps> = ({tile, clickOnTile, checkTiles}) => {
 	
-	useEffect(() => {
-		setTimeout(() => {checkTiles()}, 500);
-	})
 	
 	const handleOnClick = () => {
 		console.log(tile.id, 'Clicked', tile.backColor);
 		clickOnTile(tile);
-		//setTimeout(() => {checkTiles()}, 500);
+		setTimeout(() => {checkTiles()}, 500);
 	}
 	
 	return (
