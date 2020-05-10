@@ -1,28 +1,21 @@
 import {
 	CHECK_TILES,
 	HANDLE_CLICK_ON_TILE,
-	RESTART_GAME,
 	START_GAME,
 	TILE_TYPE,
 	TILES_ACTION_TYPES,
 	TILES_STATE
 } from "./types";
 // Tiles colors:
-import {color} from "../colors";
+import {color} from "./additional/colors";
+import {emptyTiles} from "./additional/emptyTiles";
 
 const initState: TILES_STATE = {
 	gameStarted: false,
 	
-	tiles: [
-		{id: 1, frontColor: 'lightgrey', backColor: 'black', isGuessed: false},
-		{id: 2, frontColor: 'lightgrey', backColor: 'black', isGuessed: false},
-		{id: 3, frontColor: 'lightgrey', backColor: 'black', isGuessed: false},
-		{id: 4, frontColor: 'lightgrey', backColor: 'black', isGuessed: false},
-		{id: 5, frontColor: 'lightgrey', backColor: 'black', isGuessed: false},
-		{id: 6, frontColor: 'lightgrey', backColor: 'black', isGuessed: false},
-		{id: 7, frontColor: 'lightgrey', backColor: 'black', isGuessed: false},
-		{id: 8, frontColor: 'lightgrey', backColor: 'black', isGuessed: false},
-	],
+	roundCounter: 0,
+	
+	tiles: emptyTiles.slice(),
 	
 	previousTile: null,
 	currentTile: null,
@@ -120,23 +113,16 @@ export const TilesReducer = (
 				[currentTile.frontColor, previousTile.frontColor] = [currentTile.backColor, previousTile.backColor];
 				[currentTile.isGuessed, previousTile.isGuessed] = [true, true];
 			} else {
-				arr.forEach(tile => {
-					if(!tile.isGuessed)
-						tile.frontColor = 'lightgrey'
-				})
+				previousTile.frontColor = 'lightgrey'
+				currentTile.frontColor = 'lightgrey';
 			}
 			
 			return {
 				...state,
-				tiles: arr,
+				roundCounter: state.roundCounter + 1,
+				tiles: arr.slice(),
 				currentTile: null,
 				previousTile: null,
-			}
-		}
-		
-		case RESTART_GAME: {
-			return {
-				...state
 			}
 		}
 		
