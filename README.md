@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## About:
   * Simple memo game application
   * Written on React/Redux/Typescript
-  * Currently it has several actinos:
+  * Currently it has several actions:
     * Default size(4x4), but can be expand
     * The gameplay is the sequence of rounds. 
     * In each round user should select 2 tiles with the same color to make them disappear. 
