@@ -6,6 +6,7 @@ import {Sidebar} from "./components/Sidebar/Sidebar";
 function App() {
 	return (
 		<div className="App">
+			<h1>Memo game</h1>
 			<Tiles/>
 			<Sidebar/>
 		</div>
