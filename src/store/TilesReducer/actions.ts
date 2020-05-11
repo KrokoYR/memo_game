@@ -1,4 +1,4 @@
-import {CHECK_TILES, HANDLE_CLICK_ON_TILE, START_GAME, TILE_TYPE, TILES_ACTION_TYPES} from "./types";
+import {CHECK_GAME_STATUS, CHECK_TILES, HANDLE_CLICK_ON_TILE, START_GAME, TILE_TYPE, TILES_ACTION_TYPES} from "./types";
 
 export const handleClickOnTile = (tile: TILE_TYPE): TILES_ACTION_TYPES => {
 	return {
@@ -16,5 +16,11 @@ export const checkTiles = (): TILES_ACTION_TYPES => {
 export const startGame = (): TILES_ACTION_TYPES => {
 	return {
 		type: START_GAME,
+	}
+}
+
+export const checkGameStatus = (): TILES_ACTION_TYPES => {
+	return {
+		type: CHECK_GAME_STATUS,
 	}
 }

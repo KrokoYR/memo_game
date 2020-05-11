@@ -1,4 +1,5 @@
 import {
+	CHECK_GAME_STATUS,
 	CHECK_TILES,
 	HANDLE_CLICK_ON_TILE,
 	START_GAME,
@@ -11,7 +12,8 @@ import {color} from "./additional/colors";
 import {emptyTiles} from "./additional/emptyTiles";
 
 const initState: TILES_STATE = {
-	gameStarted: false,
+	gameIsStarted: false,
+	gameIsFinished: false,
 	
 	roundCounter: 0,
 	
@@ -59,13 +61,16 @@ export const TilesReducer = (
 			
 			return {
 				...state,
-				gameStarted: true,
+				gameIsStarted: true,
+				roundCounter: 0,
 				tiles: array,
+				previousTile: null,
+				currentTile: null,
 			}
 		}
 		
 		case HANDLE_CLICK_ON_TILE: {
-			if (!state.gameStarted) {
+			if (!state.gameIsStarted) {
 				return state;
 			}
 			
@@ -73,10 +78,13 @@ export const TilesReducer = (
 			let arr = state.tiles.slice();
 			let clickedTile = arr[arr.indexOf(action.tile)];
 			
-			if (clickedTile.isGuessed)
+			// Checking if tile is already guessed
+			// or not equal to the previous one
+			if (clickedTile.isGuessed ||
+				clickedTile.id === state.previousTile?.id)
 				return state;
 			
-			
+			// Setting
 			if (state.previousTile === null) {
 				clickedTile.frontColor = clickedTile.backColor
 				return {
@@ -84,9 +92,7 @@ export const TilesReducer = (
 					previousTile: clickedTile,
 					tiles: arr,
 				}
-			}
-			
-			if (state.currentTile === null) {
+			} else if (state.currentTile === null) {
 				clickedTile.frontColor = clickedTile.backColor
 				return {
 					...state,
@@ -94,9 +100,7 @@ export const TilesReducer = (
 					tiles: arr,
 				}
 			} else {
-				return {
-					...state
-				}
+				return state
 			}
 		}
 		
@@ -108,10 +112,12 @@ export const TilesReducer = (
 			let currentTile = arr[arr.indexOf(state.currentTile)];
 			let previousTile = arr[arr.indexOf(state.previousTile)];
 			
+			let gameIsFinished = false;
 			if (currentTile.id !== previousTile.id &&
 				currentTile.backColor === previousTile.backColor) {
 				[currentTile.frontColor, previousTile.frontColor] = [currentTile.backColor, previousTile.backColor];
 				[currentTile.isGuessed, previousTile.isGuessed] = [true, true];
+				gameIsFinished = arr.every(tile => tile.isGuessed)
 			} else {
 				previousTile.frontColor = 'lightgrey'
 				currentTile.frontColor = 'lightgrey';
@@ -123,7 +129,21 @@ export const TilesReducer = (
 				tiles: arr.slice(),
 				currentTile: null,
 				previousTile: null,
+				gameIsFinished: gameIsFinished,
 			}
+		}
+		
+		case CHECK_GAME_STATUS: {
+			if (state.gameIsFinished) {
+				debugger
+				alert('Congratulations! You won at ' + state.roundCounter + ' round!')
+				return {
+					...state,
+					gameIsStarted: false,
+					gameIsFinished: false,
+				}
+			}
+			return state;
 		}
 		
 		default:
