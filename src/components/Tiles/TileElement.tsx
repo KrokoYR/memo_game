@@ -4,18 +4,29 @@ import styles from './TileElement.module.css'
 import {TILE_TYPE} from '../../store/TilesReducer/types';
 
 interface TileElementProps {
-	tile: TILE_TYPE,
-	clickOnTile: (tile: TILE_TYPE) => void,
-	checkTiles: () => void,
+	tile: TILE_TYPE;
+	clickOnTile: (tile: TILE_TYPE) => void;
+	checkTiles: () => void;
+	checkGameStatus: () => void;
 }
 
-const TileElement: FC<TileElementProps> = ({tile, clickOnTile, checkTiles}) => {
+const TileElement: FC<TileElementProps> = ({
+	                                           tile,
+	                                           clickOnTile,
+	                                           checkTiles,
+	                                           checkGameStatus,
+                                           }) => {
 	
 	
 	const handleOnClick = () => {
-		console.log(tile.id, 'Clicked', tile.backColor);
 		clickOnTile(tile);
-		setTimeout(() => {checkTiles()}, 500);
+		setTimeout(() => {
+			checkTiles()
+		}, 500);
+		setTimeout(() => {
+			checkGameStatus()
+		}, 600)
+		
 	}
 	
 	return (
