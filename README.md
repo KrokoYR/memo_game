@@ -1,5 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ## About:
+  * Homepage: https://krokoyr.github.io/memo_game/
   * Simple memo game application
   * Written on React/Redux/Typescript
   * Currently it has several actions:
