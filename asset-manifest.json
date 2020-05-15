@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.218e29ae.chunk.css",
-    "main.js": "/static/js/main.7eff1dd9.chunk.js",
-    "main.js.map": "/static/js/main.7eff1dd9.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.90bf158e.js",
-    "runtime-main.js.map": "/static/js/runtime-main.90bf158e.js.map",
-    "static/js/2.0f89fcf2.chunk.js": "/static/js/2.0f89fcf2.chunk.js",
-    "static/js/2.0f89fcf2.chunk.js.map": "/static/js/2.0f89fcf2.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.11dfbde4ab202cfe29e8004537ca76e4.js": "/precache-manifest.11dfbde4ab202cfe29e8004537ca76e4.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.218e29ae.chunk.css.map": "/static/css/main.218e29ae.chunk.css.map",
-    "static/js/2.0f89fcf2.chunk.js.LICENSE.txt": "/static/js/2.0f89fcf2.chunk.js.LICENSE.txt"
+    "main.css": "/memo_game/static/css/main.218e29ae.chunk.css",
+    "main.js": "/memo_game/static/js/main.7ec7f315.chunk.js",
+    "main.js.map": "/memo_game/static/js/main.7ec7f315.chunk.js.map",
+    "runtime-main.js": "/memo_game/static/js/runtime-main.6136c9d8.js",
+    "runtime-main.js.map": "/memo_game/static/js/runtime-main.6136c9d8.js.map",
+    "static/js/2.0f89fcf2.chunk.js": "/memo_game/static/js/2.0f89fcf2.chunk.js",
+    "static/js/2.0f89fcf2.chunk.js.map": "/memo_game/static/js/2.0f89fcf2.chunk.js.map",
+    "index.html": "/memo_game/index.html",
+    "precache-manifest.304cc21146e7f39bb3a07539f045cbdf.js": "/memo_game/precache-manifest.304cc21146e7f39bb3a07539f045cbdf.js",
+    "service-worker.js": "/memo_game/service-worker.js",
+    "static/css/main.218e29ae.chunk.css.map": "/memo_game/static/css/main.218e29ae.chunk.css.map",
+    "static/js/2.0f89fcf2.chunk.js.LICENSE.txt": "/memo_game/static/js/2.0f89fcf2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.90bf158e.js",
+    "static/js/runtime-main.6136c9d8.js",
     "static/js/2.0f89fcf2.chunk.js",
     "static/css/main.218e29ae.chunk.css",
-    "static/js/main.7eff1dd9.chunk.js"
+    "static/js/main.7ec7f315.chunk.js"
   ]
 }
