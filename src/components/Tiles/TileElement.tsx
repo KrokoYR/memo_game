@@ -1,7 +1,7 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import styles from './TileElement.module.css'
 
-import {TILE_TYPE} from '../../store/TilesReducer/types';
+import { TILE_TYPE } from '../../store/TilesReducer/types';
 
 interface TileElementProps {
 	tile: TILE_TYPE;
@@ -11,13 +11,11 @@ interface TileElementProps {
 }
 
 const TileElement: FC<TileElementProps> = ({
-	                                           tile,
-	                                           clickOnTile,
-	                                           checkTiles,
-	                                           checkGameStatus,
-                                           }) => {
-	
-	
+	tile,
+	clickOnTile,
+	checkTiles,
+	checkGameStatus,
+}) => {
 	const handleOnClick = () => {
 		clickOnTile(tile);
 		setTimeout(() => {
@@ -26,12 +24,12 @@ const TileElement: FC<TileElementProps> = ({
 		setTimeout(() => {
 			checkGameStatus()
 		}, 600)
-		
+
 	}
-	
+
 	return (
-		<div onClick={handleOnClick} className={styles.tiles__element} style={{backgroundColor: tile.frontColor}}/>
+		<div onClick={handleOnClick} className={styles.tiles__element} style={{ backgroundColor: tile.frontColor }} />
 	)
 }
 
-export {TileElement};
+export { TileElement };
