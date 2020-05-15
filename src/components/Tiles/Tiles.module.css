@@ -1,9 +1,0 @@
-.tiles__container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    width: 400px;
-    margin: 0 auto;
-    margin-top: 20px;
-}
