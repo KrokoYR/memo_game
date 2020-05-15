@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/memo_game_io/static/css/main.218e29ae.chunk.css",
+    "main.js": "/memo_game_io/static/js/main.da9ddf17.chunk.js",
+    "main.js.map": "/memo_game_io/static/js/main.da9ddf17.chunk.js.map",
+    "runtime-main.js": "/memo_game_io/static/js/runtime-main.ca5ae9a4.js",
+    "runtime-main.js.map": "/memo_game_io/static/js/runtime-main.ca5ae9a4.js.map",
+    "static/js/2.0f89fcf2.chunk.js": "/memo_game_io/static/js/2.0f89fcf2.chunk.js",
+    "static/js/2.0f89fcf2.chunk.js.map": "/memo_game_io/static/js/2.0f89fcf2.chunk.js.map",
+    "index.html": "/memo_game_io/index.html",
+    "precache-manifest.0b0c864adf101cfb172ca7b4cc23da04.js": "/memo_game_io/precache-manifest.0b0c864adf101cfb172ca7b4cc23da04.js",
+    "service-worker.js": "/memo_game_io/service-worker.js",
+    "static/css/main.218e29ae.chunk.css.map": "/memo_game_io/static/css/main.218e29ae.chunk.css.map",
+    "static/js/2.0f89fcf2.chunk.js.LICENSE.txt": "/memo_game_io/static/js/2.0f89fcf2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ca5ae9a4.js",
+    "static/js/2.0f89fcf2.chunk.js",
+    "static/css/main.218e29ae.chunk.css",
+    "static/js/main.da9ddf17.chunk.js"
+  ]
+}
