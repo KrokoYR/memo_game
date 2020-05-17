@@ -5,7 +5,7 @@ import {
   START_GAME,
   TILE_TYPE,
   TILES_ACTION_TYPES,
-} from "./types";
+} from './types';
 
 export const handleClickOnTile = (tile: TILE_TYPE): TILES_ACTION_TYPES => {
   return {

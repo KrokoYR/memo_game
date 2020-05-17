@@ -28,11 +28,11 @@ export interface TILES_STATE {
 }
 
 // Actions types:
-export const HANDLE_CLICK_ON_TILE = "HANDLE_CLICK_ON_TILE";
-export const CHECK_TILES = "CHECK_TILES";
+export const HANDLE_CLICK_ON_TILE = 'HANDLE_CLICK_ON_TILE';
+export const CHECK_TILES = 'CHECK_TILES';
 
-export const START_GAME = "START_GAME";
-export const CHECK_GAME_STATUS = "CHECK_GAME_STATUS";
+export const START_GAME = 'START_GAME';
+export const CHECK_GAME_STATUS = 'CHECK_GAME_STATUS';
 
 interface HANDLE_CLICK_ON_TILE_ACTION {
   type: typeof HANDLE_CLICK_ON_TILE;

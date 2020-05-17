@@ -6,10 +6,10 @@ import {
   TILE_TYPE,
   TILES_ACTION_TYPES,
   TILES_STATE,
-} from "./types";
+} from './types';
 // Tiles colors:
-import { color } from "./additional/colors";
-import { emptyTiles } from "./additional/emptyTiles";
+import { color } from './additional/colors';
+import { emptyTiles } from './additional/emptyTiles';
 
 const initState: TILES_STATE = {
   gameIsStarted: false,
@@ -50,13 +50,13 @@ export const TilesReducer = (
         arr.push([
           {
             id: id,
-            frontColor: "lightgrey",
+            frontColor: 'lightgrey',
             backColor: color[i],
             isGuessed: false,
           },
           {
             id: id + 1,
-            frontColor: "lightgrey",
+            frontColor: 'lightgrey',
             backColor: color[i],
             isGuessed: false,
           },
@@ -132,8 +132,8 @@ export const TilesReducer = (
         [currentTile.isGuessed, previousTile.isGuessed] = [true, true];
         gameIsFinished = arr.every((tile) => tile.isGuessed);
       } else {
-        previousTile.frontColor = "lightgrey";
-        currentTile.frontColor = "lightgrey";
+        previousTile.frontColor = 'lightgrey';
+        currentTile.frontColor = 'lightgrey';
       }
 
       return {
@@ -149,7 +149,7 @@ export const TilesReducer = (
     case CHECK_GAME_STATUS: {
       if (state.gameIsFinished) {
         debugger;
-        alert("Congratulations! You won at " + state.roundCounter + " round!");
+        alert('Congratulations! You won at ' + state.roundCounter + ' round!');
         return {
           ...state,
           gameIsStarted: false,
